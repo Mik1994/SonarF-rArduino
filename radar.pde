@@ -14,7 +14,6 @@ class Radar
   void display() {
     float deltaD=dmax;
     pushMatrix();
-    translate(width/2,height/2);
     noFill();
     stroke(0,256,0);
     strokeWeight(1);
