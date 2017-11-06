@@ -14,11 +14,13 @@ class Updater
   }
   
   void setPoint(float a,float b){
-    px=b*sin(a);
-    py=b*cos(a);
-    //map(Y,0,180,400,400);
-    println("a"+a+" b"+b+" px"+px+"py"+py);
+
+    px=b*sin((a));
+    py=b*cos((a));
   }
+    
+  
+
   
   boolean pIsBetween(){
     
@@ -32,15 +34,14 @@ class Updater
       return false;
     }
     
-   // println(abs(dotproduct*dotproduct -  lenAC*lenBC));
     if (abs(dotproduct*dotproduct -  lenAC*lenBC) < 1 ){
       return false;
     }
     return true;
   }
+  
+  
   void display() {
-  pushMatrix();
-    translate(width/2,height/2);
     stroke(0,256,0);
     
     strokeWeight(1);
@@ -49,19 +50,23 @@ class Updater
     
     deltax=radius*sin(angle);
     deltay=radius*cos(angle);
-    line(x,y,deltax,deltay);
+    /**/
+    
+    //line(x,y,deltax,deltay);
     if (  !pIsBetween() ){
       fill(0,256,0);
       ellipse(px,py,10,10);
     }
-    //rotate(0.1);
     stroke(255,0,0);
-    line(x,dy/2,x,y);
+    float deltax2=radius*sin(angle-0.9);
+    float deltay2=radius*cos(angle-0.9);
+    line(deltax2,deltay2,x,y);
     
     if (angle <= 0){
     angle=360;
     }
-    angle-=0.1;
-    popMatrix();
+    // Geschwindigkeit des Roten Lasers
+    // 0.05 == Standard
+    angle-=0.05;
   }
 }
