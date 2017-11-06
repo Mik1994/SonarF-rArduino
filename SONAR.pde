@@ -23,12 +23,20 @@ void draw() {
     }
   }
   */
-  
+
   background(3);
-  for (int i=0; i<180;i++){
-      radar.upd.setPoint(i,random(100,400));
-  }
+  fill(255);
+  noStroke();
+  translate(width/2,height/2);
   
+  float winkel= 180;
+  float w=map(winkel,0,180,radians(90),radians(270));
+  float radius=250;
+  // Mein Liebgewonnener Debug Kreis
+  fill(255,20,20);
+  ellipse(300*sin(w),300*cos(w),20,20);
+  //
+  radar.upd.setPoint(w,radius);
   radar.display();
   radar.upd.display();
   
